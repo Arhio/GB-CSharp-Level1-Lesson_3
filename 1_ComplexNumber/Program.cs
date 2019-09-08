@@ -48,10 +48,25 @@ namespace _1_ComplexNumber
             //            Добавить упрощение дробей.
         }
 
+        /// <summary>
+        /// Класс запроса данных у пользователя
+        /// </summary>
         class Questions
         {
+            /// <summary>
+            /// Перевести первый символ в заглавный
+            /// </summary>
+            /// <param name="text"></param>
+            /// <returns></returns>
             public string FirstUpper(string text) => text.Substring(0, 1).ToUpper() + (text.Length > 1 ? text.Substring(1) : "");
 
+            /// <summary>
+            /// Запрос данных у пользователя
+            /// </summary>
+            /// <typeparam name="T">Тип выводимых значений</typeparam>
+            /// <param name="text">Текст запроса значения у пользователя</param>
+            /// <param name="arraySym">Массив допустимых вводимых символов пользователем</param>
+            /// <returns></returns>
             public string Question<T>(string text, HashSet<char> arraySym)
             {
                 Console.Write(text);
@@ -90,14 +105,29 @@ namespace _1_ComplexNumber
             }
         }
 
+        /// <summary>
+        /// Класс расширения возможности консольного приложения
+        /// </summary>
         public class Extension
         {
+            /// <summary>
+            /// Вывести текст на экран
+            /// </summary>
+            /// <param name="text">Текст выводимый на экран пользователя</param>
+            /// <param name="x">Начальная позиция X для выводимого текста</param>
+            /// <param name="y">Позиция Y (начиная от верха экрана) для выводимого текста</param>
             public void Print(string text, int x, int y)
             {
                 Console.SetCursorPosition(x, y);
                 Console.Write(text);
             }
 
+            /// <summary>
+            /// Вывести текст на экран
+            /// </summary>
+            /// <param name="text">Текст выводимый на экран пользователя</param>
+            /// <param name="position">Расположение на экране</param>
+            /// <param name="y">Позиция Y (начиная от верха экрана) для выводимого текста</param>
             public void Print(string text, PositionForRow position, int y)
             {
                 if (position == PositionForRow.Center)
@@ -127,11 +157,21 @@ namespace _1_ComplexNumber
                 }
             }
 
+            /// <summary>
+            /// Пауза приложения
+            /// </summary>
+            /// <param name="millisec">Продолжительность паузы в миллисекундах</param>
             public void Pause(int millisec) => System.Threading.Thread.Sleep(millisec);
+            /// <summary>
+            /// Пауза приложения до нажатия любой клавиши пользователем
+            /// </summary>
             public void Pause() => ReadKey(true);
 
         }
 
+        /// <summary>
+        /// Позиция на экране
+        /// </summary>
         public enum PositionForRow
         {
             Center,
@@ -143,7 +183,7 @@ namespace _1_ComplexNumber
     /// <summary>
     /// Комплексное число
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Тип данных комплексного числа (только числовые значения)</typeparam>
     struct Complex<T> where T: struct
     {
         private T a;
